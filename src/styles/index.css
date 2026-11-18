@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-space-black: #050711;
+    --color-deep-navy: #0B1025;
+    --color-cosmic-blue: #253B75;
+    --color-nebula-purple: #7465C9;
+    --color-starlight: #B8C9FF;
+    --color-moon-white: #F1F3FA;
+    --color-muted-grey: #8991A8;
+
+    --border-subtle: rgba(184, 201, 255, 0.12);
+    --border-glow: rgba(116, 101, 201, 0.4);
+    --glass-bg: rgba(11, 16, 37, 0.65);
+    --shadow-cosmic: 0 12px 45px rgba(5, 7, 17, 0.85);
+    --shadow-starlight: 0 0 36px rgba(116, 101, 201, 0.22);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-space-black);
+    color: var(--color-moon-white);
+  }
+
+  body {
+    background-color: var(--color-space-black);
+    color: var(--color-moon-white);
+    font-family: 'Inter', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.font-display {
+  font-family: 'Space Grotesk', 'Be Vietnam Pro', sans-serif;
+}
+
+.font-cosmic {
+  font-family: 'Be Vietnam Pro', 'Space Grotesk', sans-serif;
+}
+
+.font-quote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
+}
+
+/* Selective glassmorphism */
+.cosmic-glass {
+  background: rgba(11, 16, 37, 0.62);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(184, 201, 255, 0.12);
+}
+
+.cosmic-glass-strong {
+  background: rgba(5, 7, 17, 0.84);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(184, 201, 255, 0.16);
+}
+
+/* Atmospheric nebula washes */
+.nebula-wash-blue {
+  background: radial-gradient(circle at center, rgba(37, 59, 117, 0.28) 0%, transparent 70%);
+}
+
+.nebula-wash-purple {
+  background: radial-gradient(circle at center, rgba(116, 101, 201, 0.2) 0%, transparent 70%);
+}
+
+/* Subtle cosmic grid */
+.cosmic-grid {
+  background-image:
+    linear-gradient(to right, rgba(184, 201, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(184, 201, 255, 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Shooting star & nebula drift animations */
+@keyframes nebulaDriftA {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.24;
+  }
+  50% {
+    transform: translate3d(40px, 28px, 0) scale(1.08);
+    opacity: 0.34;
+  }
+}
+
+@keyframes nebulaDriftB {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.18;
+  }
+  50% {
+    transform: translate3d(-45px, -30px, 0) scale(1.1);
+    opacity: 0.28;
+  }
+}
+
+.animate-nebula-a {
+  animation: nebulaDriftA 26s ease-in-out infinite;
+}
+
+.animate-nebula-b {
+  animation: nebulaDriftB 34s ease-in-out infinite;
+}
+
+@keyframes planetFloatA {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(2.5deg);
+  }
+}
+
+@keyframes planetFloatB {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, 12px, 0) rotate(-2.5deg);
+  }
+}
+
+.animate-planet-a {
+  animation: planetFloatA 12s ease-in-out infinite;
+}
+
+.animate-planet-b {
+  animation: planetFloatB 15s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050711;
+}
+::-webkit-scrollbar-thumb {
+  background: #253B75;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7465C9;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
